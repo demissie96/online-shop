@@ -1,9 +1,9 @@
 import React from "react";
 
-function App() {
+function Header() {
   return <>
   
   </>;
 }
 
-export default App;
+export default Header;
