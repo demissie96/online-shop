@@ -1,12 +1,24 @@
 import React from "react";
 import Header from "./components/Header";
 import ShopItem from "./components/ShopItem";
+import "./ShopPage.css";
 
 function ShopPage() {
   return (
     <>
       <Header />
-      <ShopItem />
+      <div id="item-cards-div">
+        <ShopItem />
+        <ShopItem />
+        <ShopItem />
+        <ShopItem />
+        <ShopItem />
+        <ShopItem />
+        <ShopItem />
+        <ShopItem />
+        <ShopItem />
+        <ShopItem />
+      </div>
     </>
   );
 }
