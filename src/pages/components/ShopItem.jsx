@@ -3,7 +3,7 @@ import "./ShopItem.css";
 
 let itemNum = 0;
 
-function ShopItem() {
+function ShopItem(props) {
   const [itemNumber, setItemNumber] = useState(itemNum);
   const [quantityName, setQuantityName] = useState("pc");
 
@@ -27,13 +27,13 @@ function ShopItem() {
       <div className="card shadow-sm item-card">
         <img
           id="card-image"
-          src="/images/items/smart-phone.jpg"
+          src={props.image}
           width="298px"
           height="225px"
         ></img>
 
         <div className="card-body">
-          <h4>Smartphone</h4>
+          <h4>{props.name}</h4>
           <p className="card-text">
             You won't purchase anything. It's only for demonstration purpose.
           </p>
