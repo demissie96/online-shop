@@ -35,7 +35,7 @@ function LoginPage() {
             <img
               className="mb-4"
               src="/images/bootstrap-logo.svg"
-              alt=""
+              alt="logo"
               width="72"
               height="57"
             />

@@ -55,19 +55,19 @@ function Header() {
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <a className="nav-link active" aria-current="page" href="/">
                     Home
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/">
                     Link
                   </a>
                 </li>
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
-                    href="#"
+                    href="/"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
@@ -76,12 +76,12 @@ function Header() {
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/">
                         Action
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/">
                         Another action
                       </a>
                     </li>
@@ -89,7 +89,7 @@ function Header() {
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/">
                         Something else here
                       </a>
                     </li>
