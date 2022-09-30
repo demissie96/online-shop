@@ -6,7 +6,6 @@ function ShopPage() {
   return (
     <>
       <Header />
-      <h1>Hello Shopper</h1>
       <ShopItem />
     </>
   );
