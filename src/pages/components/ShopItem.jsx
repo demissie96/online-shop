@@ -1,24 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ShopItem.css";
 
-let itemNum = 0;
-
 function ShopItem(props) {
-  const [itemNumber, setItemNumber] = useState(itemNum);
-  const [quantityName, setQuantityName] = useState("pc");
-
   function changeAmount(e) {
-    if (e === "plus" && itemNum < 10) {
-      itemNum++;
-    } else if (e === "minus" && itemNum > 0) {
-      itemNum--;
-    }
-
-    setItemNumber(itemNum);
-    if (itemNum > 0) {
-      setQuantityName("pcs");
-    } else {
-      setQuantityName("pc");
+    if (e === "plus" && props.amount < 10) {
+      props.changeAmount({ operator: "plus", name: props.name });
+    } else if (e === "minus" && props.amount > 0) {
+      props.changeAmount({ operator: "minus", name: props.name });
     }
   }
 
@@ -27,6 +15,7 @@ function ShopItem(props) {
       <div className="card shadow-sm item-card">
         <img
           id="card-image"
+          alt="product"
           src={props.image}
           width="298px"
           height="225px"
@@ -56,7 +45,7 @@ function ShopItem(props) {
                 -
               </button>
               <p id="item-number" className="text-muted">
-                {itemNumber} {quantityName}
+                {props.amount} {props.quantityName}
               </p>
             </div>
 
