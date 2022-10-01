@@ -1,11 +1,11 @@
 import React from "react";
 import "./Header.css";
 
-function Header() {
+function Header(props) {
   return (
     <>
       <nav
-        className="navbar navbar-dark bg-dark"
+        className="navbar navbar-dark bg-dark fixed-top"
         aria-label="Dark offcanvas navbar"
       >
         <div className="container-fluid">
@@ -13,7 +13,7 @@ function Header() {
             Online Shop
           </a>
           <div>
-            <i id="items-in-cart">0</i>
+            <i id="items-in-cart">{props.sum}</i>
             <span id="cart-text">Shopping Cart</span>
             <button
               className="navbar-toggler"
@@ -43,7 +43,7 @@ function Header() {
           >
             <div className="offcanvas-header">
               <h5 className="offcanvas-title" id="offcanvasNavbarDarkLabel">
-                Offcanvas
+                Your Shopping Cart
               </h5>
               <button
                 type="button"
@@ -52,61 +52,41 @@ function Header() {
                 aria-label="Close"
               ></button>
             </div>
+
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">
-                    Home
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/">
-                    Link
-                  </a>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="/"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Dropdown
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="/">
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="/">
-                        Another action
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="/">
-                        Something else here
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+                {props.shoppingCart.map((element) => {
+                  if (element.amount !== 0) {
+                    return (
+                      <div key={element.name}>
+                        <hr></hr>
+                        <li className="nav-item">
+                          <i className="active" aria-current="page">
+                            {element.name} - {element.amount}
+                            {element.quantityName}
+                          </i>
+                        </li>
+                      </div>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+
+                <hr></hr>
+
+                <br></br>
               </ul>
-              <form className="d-flex mt-3" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
+
+              <div>
+                {props.sum > 0 ? (
+                  <button className="btn btn-outline-success">Checkout</button>
+                ) : (
+                  <button disabled className="btn btn-outline-success">
+                    Checkout
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>

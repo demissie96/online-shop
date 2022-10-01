@@ -22,6 +22,42 @@ let quantityNameSsd = "pc";
 let monitorSum = 0;
 let quantityNameMonitor = "pc";
 
+const shoppingCartObject = [
+  {
+    amount: smartphoneSum,
+    name: "Smartphone",
+    quantityName: quantityNamePhone,
+  },
+  {
+    amount: headphonesSum,
+    name: "Headphones",
+    quantityName: quantityNameHeadphones,
+  },
+  {
+    amount: laptopSum,
+    name: "Laptop",
+    quantityName: quantityNameLaptop,
+  },
+  {
+    amount: keyboardSum,
+    name: "Keyboard",
+    quantityName: quantityNameKeyboard,
+  },
+  { amount: mouseSum, name: "Mouse", quantityName: quantityNameMouse },
+  {
+    amount: thermalPasteSum,
+    name: "Thermal Paste",
+    quantityName: quantityNamePaste,
+  },
+  { amount: ramSum, name: "RAM", quantityName: quantityNameRam },
+  { amount: ssdSum, name: "SSD", quantityName: quantityNameSsd },
+  {
+    amount: monitorSum,
+    name: "Monitor",
+    quantityName: quantityNameMonitor,
+  },
+];
+
 function ShopPage() {
   const [phone, setPhone] = useState(smartphoneSum);
   const [headphone, setHeadphone] = useState(headphonesSum);
@@ -32,160 +68,276 @@ function ShopPage() {
   const [ram, setRam] = useState(ramSum);
   const [ssd, setSsd] = useState(ssdSum);
   const [monitor, setMonitor] = useState(monitorSum);
+  const [shoppingCart] = useState(shoppingCartObject);
+  const [sumOfItemsInCart, setSumOfItemsInCart] = useState(0);
+
+  function countItemsInCart() {
+    let sum = 0;
+    shoppingCartObject.forEach((element) => {
+      sum += element.amount;
+    });
+    setSumOfItemsInCart(sum);
+  }
 
   function changeAmount(e) {
-    console.log(e.name);
-    console.log(e.operator);
     if (e.name === "Smartphone" && e.operator === "plus") {
       smartphoneSum++;
       setPhone(smartphoneSum);
-      if (smartphoneSum > 0) {
+
+      if (smartphoneSum > 1) {
         quantityNamePhone = "pcs";
       } else {
         quantityNamePhone = "pc";
       }
+
+      shoppingCartObject[0].amount = smartphoneSum;
+      shoppingCartObject[0].quantityName = quantityNamePhone;
+
+      countItemsInCart();
     } else if (e.name === "Smartphone" && e.operator === "minus") {
       smartphoneSum--;
       setPhone(smartphoneSum);
-      if (smartphoneSum > 0) {
+
+      if (smartphoneSum > 1) {
         quantityNamePhone = "pcs";
       } else {
         quantityNamePhone = "pc";
       }
+
+      shoppingCartObject[0].amount = smartphoneSum;
+      shoppingCartObject[0].quantityName = quantityNamePhone;
+
+      countItemsInCart();
     } else if (e.name === "Headphones" && e.operator === "plus") {
       headphonesSum++;
       setHeadphone(headphonesSum);
-      if (headphonesSum > 0) {
+
+      if (headphonesSum > 1) {
         quantityNameHeadphones = "pcs";
       } else {
         quantityNameHeadphones = "pc";
       }
+
+      shoppingCartObject[1].amount = headphonesSum;
+      shoppingCartObject[1].quantityName = quantityNameHeadphones;
+
+      countItemsInCart();
     } else if (e.name === "Headphones" && e.operator === "minus") {
       headphonesSum--;
       setHeadphone(headphonesSum);
-      if (headphonesSum > 0) {
+
+      if (headphonesSum > 1) {
         quantityNameHeadphones = "pcs";
       } else {
         quantityNameHeadphones = "pc";
       }
+
+      shoppingCartObject[1].amount = headphonesSum;
+      shoppingCartObject[1].quantityName = quantityNameHeadphones;
+
+      countItemsInCart();
     } else if (e.name === "Laptop" && e.operator === "plus") {
       laptopSum++;
       setLaptop(laptopSum);
-      if (laptopSum > 0) {
+
+      if (laptopSum > 1) {
         quantityNameLaptop = "pcs";
       } else {
         quantityNameLaptop = "pc";
       }
+
+      shoppingCartObject[2].amount = laptopSum;
+      shoppingCartObject[2].quantityName = quantityNameLaptop;
+
+      countItemsInCart();
     } else if (e.name === "Laptop" && e.operator === "minus") {
       laptopSum--;
       setLaptop(laptopSum);
-      if (laptopSum > 0) {
+
+      if (laptopSum > 1) {
         quantityNameLaptop = "pcs";
       } else {
         quantityNameLaptop = "pc";
       }
+
+      shoppingCartObject[2].amount = laptopSum;
+      shoppingCartObject[2].quantityName = quantityNameLaptop;
+
+      countItemsInCart();
     } else if (e.name === "Keyboard" && e.operator === "plus") {
       keyboardSum++;
       setKeyboard(keyboardSum);
-      if (keyboardSum > 0) {
+
+      if (keyboardSum > 1) {
         quantityNameKeyboard = "pcs";
       } else {
         quantityNameKeyboard = "pc";
       }
+
+      shoppingCartObject[3].amount = keyboardSum;
+      shoppingCartObject[3].quantityName = quantityNameKeyboard;
+
+      countItemsInCart();
     } else if (e.name === "Keyboard" && e.operator === "minus") {
       keyboardSum--;
       setKeyboard(keyboardSum);
-      if (keyboardSum > 0) {
+
+      if (keyboardSum > 1) {
         quantityNameKeyboard = "pcs";
       } else {
         quantityNameKeyboard = "pc";
       }
+
+      shoppingCartObject[3].amount = keyboardSum;
+      shoppingCartObject[3].quantityName = quantityNameKeyboard;
+
+      countItemsInCart();
     } else if (e.name === "Thermal Paste" && e.operator === "plus") {
       thermalPasteSum++;
       setThermalPaste(thermalPasteSum);
-      if (thermalPasteSum > 0) {
+
+      if (thermalPasteSum > 1) {
         quantityNamePaste = "pcs";
       } else {
         quantityNamePaste = "pc";
       }
+
+      shoppingCartObject[5].amount = thermalPasteSum;
+      shoppingCartObject[5].quantityName = quantityNamePaste;
+
+      countItemsInCart();
     } else if (e.name === "Thermal Paste" && e.operator === "minus") {
       thermalPasteSum--;
       setThermalPaste(thermalPasteSum);
-      if (thermalPasteSum > 0) {
+
+      if (thermalPasteSum > 1) {
         quantityNamePaste = "pcs";
       } else {
         quantityNamePaste = "pc";
       }
+
+      shoppingCartObject[5].amount = thermalPasteSum;
+      shoppingCartObject[5].quantityName = quantityNamePaste;
+
+      countItemsInCart();
     } else if (e.name === "RAM" && e.operator === "plus") {
       ramSum++;
       setRam(ramSum);
-      if (ramSum > 0) {
+
+      if (ramSum > 1) {
         quantityNameRam = "pcs";
       } else {
         quantityNameRam = "pc";
       }
+
+      shoppingCartObject[6].amount = ramSum;
+      shoppingCartObject[6].quantityName = quantityNameRam;
+
+      countItemsInCart();
     } else if (e.name === "RAM" && e.operator === "minus") {
       ramSum--;
       setRam(ramSum);
-      if (ramSum > 0) {
+
+      if (ramSum > 1) {
         quantityNameRam = "pcs";
       } else {
         quantityNameRam = "pc";
       }
+
+      shoppingCartObject[6].amount = ramSum;
+      shoppingCartObject[6].quantityName = quantityNameRam;
+
+      countItemsInCart();
     } else if (e.name === "SSD" && e.operator === "plus") {
       ssdSum++;
       setSsd(ssdSum);
-      if (ssdSum > 0) {
+
+      if (ssdSum > 1) {
         quantityNameSsd = "pcs";
       } else {
         quantityNameSsd = "pc";
       }
+
+      shoppingCartObject[7].amount = ssdSum;
+      shoppingCartObject[7].quantityName = quantityNameSsd;
+
+      countItemsInCart();
     } else if (e.name === "SSD" && e.operator === "minus") {
       ssdSum--;
       setSsd(ssdSum);
-      if (ssdSum > 0) {
+
+      if (ssdSum > 1) {
         quantityNameSsd = "pcs";
       } else {
         quantityNameSsd = "pc";
       }
+
+      shoppingCartObject[7].amount = ssdSum;
+      shoppingCartObject[7].quantityName = quantityNameSsd;
+
+      countItemsInCart();
     } else if (e.name === "Mouse" && e.operator === "plus") {
       mouseSum++;
       setMouse(mouseSum);
-      if (mouseSum > 0) {
+
+      if (mouseSum > 1) {
         quantityNameMouse = "pcs";
       } else {
         quantityNameMouse = "pc";
       }
+
+      shoppingCartObject[4].amount = mouseSum;
+      shoppingCartObject[4].quantityName = quantityNameMouse;
+
+      countItemsInCart();
     } else if (e.name === "Mouse" && e.operator === "minus") {
       mouseSum--;
       setMouse(mouseSum);
-      if (mouseSum > 0) {
+
+      if (mouseSum > 1) {
         quantityNameMouse = "pcs";
       } else {
         quantityNameMouse = "pc";
       }
+
+      shoppingCartObject[4].amount = mouseSum;
+      shoppingCartObject[4].quantityName = quantityNameMouse;
+
+      countItemsInCart();
     } else if (e.name === "Monitor" && e.operator === "plus") {
       monitorSum++;
       setMonitor(monitorSum);
-      if (monitorSum > 0) {
+
+      if (monitorSum > 1) {
         quantityNameMonitor = "pcs";
       } else {
         quantityNameMonitor = "pc";
       }
+
+      shoppingCartObject[8].amount = monitorSum;
+      shoppingCartObject[8].quantityName = quantityNameMonitor;
+
+      countItemsInCart();
     } else if (e.name === "Monitor" && e.operator === "minus") {
       monitorSum--;
       setMonitor(monitorSum);
-      if (monitorSum > 0) {
+
+      if (monitorSum > 1) {
         quantityNameMonitor = "pcs";
       } else {
         quantityNameMonitor = "pc";
       }
+
+      shoppingCartObject[8].amount = monitorSum;
+      shoppingCartObject[8].quantityName = quantityNameMonitor;
+
+      countItemsInCart();
     }
   }
 
   return (
     <>
-      <Header />
+      <Header shoppingCart={shoppingCart} sum={sumOfItemsInCart} />
       <div id="item-cards-div">
         <ShopItem
           changeAmount={changeAmount}
