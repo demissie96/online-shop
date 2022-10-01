@@ -97,7 +97,7 @@ function Header(props) {
                 {props.sum > 0 ? (
                   <button className="btn btn-outline-success">Checkout</button>
                 ) : (
-                  <button disabled className="btn btn-outline-success">
+                  <button disabled className="btn btn-outline-danger">
                     Checkout
                   </button>
                 )}
