@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import ShopItem from "./components/ShopItem";
 import "./ShopPage.css";
@@ -72,12 +72,28 @@ function ShopPage() {
   const [shoppingCart] = useState(shoppingCartObject);
   const [sumOfItemsInCart, setSumOfItemsInCart] = useState(0);
 
+  useEffect(() => {
+    const result = localStorage.getItem("cart");
+    const objectResult = JSON.parse(result);
+
+    for (let index = 0; index < shoppingCartObject.length; index++) {
+      shoppingCartObject[index].amount = objectResult[index].amount;
+      shoppingCartObject[index].quantityName = objectResult[index].quantityName;
+    }
+
+    countItemsInCart();
+  }, []);
+
   function countItemsInCart() {
     let sum = 0;
     shoppingCartObject.forEach((element) => {
       sum += element.amount;
     });
     setSumOfItemsInCart(sum);
+
+    localStorage.clear();
+    let cartInString = JSON.stringify(shoppingCartObject);
+    localStorage.setItem("cart", cartInString);
   }
 
   function addToCart(e) {
@@ -318,7 +334,11 @@ function ShopPage() {
 
   return (
     <>
-      <Header shoppingCart={shoppingCart} sum={sumOfItemsInCart} deleteFromCart={deleteFromCart} />
+      <Header
+        shoppingCart={shoppingCart}
+        sum={sumOfItemsInCart}
+        deleteFromCart={deleteFromCart}
+      />
       <div id="item-cards-div">
         <ShopItem
           changeAmount={changeAmount}
