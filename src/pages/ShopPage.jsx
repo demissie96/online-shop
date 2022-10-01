@@ -85,31 +85,31 @@ function ShopPage() {
 
     if (e === "Smartphone") {
       shoppingCartObject[0].amount = smartphoneSum;
-      shoppingCartObject[0].quantityName = "pc";
+      shoppingCartObject[0].quantityName = quantityNamePhone;
     } else if (e === "Headphones") {
       shoppingCartObject[1].amount = headphonesSum;
-      shoppingCartObject[1].quantityName = "pc";
+      shoppingCartObject[1].quantityName = quantityNameHeadphones;
     } else if (e === "Laptop") {
       shoppingCartObject[2].amount = laptopSum;
-      shoppingCartObject[2].quantityName = "pc";
+      shoppingCartObject[2].quantityName = quantityNameLaptop;
     } else if (e === "Keyboard") {
       shoppingCartObject[3].amount = keyboardSum;
-      shoppingCartObject[3].quantityName = "pc";
+      shoppingCartObject[3].quantityName = quantityNameKeyboard;
     } else if (e === "Thermal Paste") {
       shoppingCartObject[5].amount = thermalPasteSum;
-      shoppingCartObject[5].quantityName = "pc";
+      shoppingCartObject[5].quantityName = quantityNamePaste;
     } else if (e === "RAM") {
       shoppingCartObject[6].amount = ramSum;
-      shoppingCartObject[6].quantityName = "pc";
+      shoppingCartObject[6].quantityName = quantityNameRam;
     } else if (e === "SSD") {
       shoppingCartObject[7].amount = ssdSum;
-      shoppingCartObject[7].quantityName = "pc";
+      shoppingCartObject[7].quantityName = quantityNameSsd;
     } else if (e === "Mouse") {
       shoppingCartObject[4].amount = mouseSum;
-      shoppingCartObject[4].quantityName = "pc";
+      shoppingCartObject[4].quantityName = quantityNameMouse;
     } else if (e === "Monitor") {
       shoppingCartObject[8].amount = monitorSum;
-      shoppingCartObject[8].quantityName = "pc";
+      shoppingCartObject[8].quantityName = quantityNameMonitor;
     }
 
     countItemsInCart();
@@ -120,31 +120,31 @@ function ShopPage() {
 
     if (e === "Smartphone") {
       shoppingCartObject[0].amount = 0;
-      shoppingCartObject[0].quantityName = quantityNamePhone;
+      shoppingCartObject[0].quantityName = "pc";
     } else if (e === "Headphones") {
       shoppingCartObject[1].amount = 0;
-      shoppingCartObject[1].quantityName = quantityNameHeadphones;
+      shoppingCartObject[1].quantityName = "pc";
     } else if (e === "Laptop") {
       shoppingCartObject[2].amount = 0;
-      shoppingCartObject[2].quantityName = quantityNameLaptop;
+      shoppingCartObject[2].quantityName = "pc";
     } else if (e === "Keyboard") {
       shoppingCartObject[3].amount = 0;
-      shoppingCartObject[3].quantityName = quantityNameKeyboard;
+      shoppingCartObject[3].quantityName = "pc";
     } else if (e === "Thermal Paste") {
       shoppingCartObject[5].amount = 0;
-      shoppingCartObject[5].quantityName = quantityNamePaste;
+      shoppingCartObject[5].quantityName = "pc";
     } else if (e === "RAM") {
       shoppingCartObject[6].amount = 0;
-      shoppingCartObject[6].quantityName = quantityNameRam;
+      shoppingCartObject[6].quantityName = "pc";
     } else if (e === "SSD") {
       shoppingCartObject[7].amount = 0;
-      shoppingCartObject[7].quantityName = quantityNameSsd;
+      shoppingCartObject[7].quantityName = "pc";
     } else if (e === "Mouse") {
       shoppingCartObject[4].amount = 0;
-      shoppingCartObject[4].quantityName = quantityNameMouse;
+      shoppingCartObject[4].quantityName = "pc";
     } else if (e === "Monitor") {
       shoppingCartObject[8].amount = 0;
-      shoppingCartObject[8].quantityName = quantityNameMonitor;
+      shoppingCartObject[8].quantityName = "pc";
     }
 
     countItemsInCart();
