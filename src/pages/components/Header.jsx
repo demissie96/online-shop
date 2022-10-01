@@ -1,12 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 function Header(props) {
+  let navigate = useNavigate();
 
-  // function deleteFromCart() {
-  //   props.deleteFromCart();
-  // }
-  
   return (
     <>
       <nav
@@ -14,7 +12,7 @@ function Header(props) {
         aria-label="Dark offcanvas navbar"
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="/shop">
+          <a className="navbar-brand" href="/">
             Online Shop
           </a>
           <div>
@@ -95,7 +93,14 @@ function Header(props) {
 
               <div>
                 {props.sum > 0 ? (
-                  <button className="btn btn-outline-success">Checkout</button>
+                  <button
+                    className="btn btn-outline-success"
+                    onClick={() =>
+                      navigate("/checkout")
+                    }
+                  >
+                    Checkout
+                  </button>
                 ) : (
                   <button disabled className="btn btn-outline-danger">
                     Checkout
