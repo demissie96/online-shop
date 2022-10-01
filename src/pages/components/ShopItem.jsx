@@ -10,6 +10,10 @@ function ShopItem(props) {
     }
   }
 
+  function addToCart(e) {
+    props.addToCart(e);
+  }
+
   return (
     <>
       <div className="card shadow-sm item-card">
@@ -53,6 +57,7 @@ function ShopItem(props) {
               id="button-add-cart"
               type="button"
               className="btn btn-sm btn-primary"
+              onClick={() => addToCart(props.name)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

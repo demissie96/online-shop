@@ -2,6 +2,11 @@ import React from "react";
 import "./Header.css";
 
 function Header(props) {
+
+  // function deleteFromCart() {
+  //   props.deleteFromCart();
+  // }
+  
   return (
     <>
       <nav
@@ -61,10 +66,20 @@ function Header(props) {
                       <div key={element.name}>
                         <hr></hr>
                         <li className="nav-item">
-                          <i className="active" aria-current="page">
-                            {element.name} - {element.amount}
-                            {element.quantityName}
-                          </i>
+                          <div className="d-flex justify-content-between">
+                            <i className="active" aria-current="page">
+                              {element.name} - {element.amount}
+                              {element.quantityName}
+                            </i>
+                            <button
+                              className="btn btn-outline-danger"
+                              onClick={() => {
+                                props.deleteFromCart(element.name);
+                              }}
+                            >
+                              Delete
+                            </button>
+                          </div>
                         </li>
                       </div>
                     );

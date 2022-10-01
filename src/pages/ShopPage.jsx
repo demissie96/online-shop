@@ -22,6 +22,7 @@ let quantityNameSsd = "pc";
 let monitorSum = 0;
 let quantityNameMonitor = "pc";
 
+// This has to be accurate. This data will be shown in the shopping cart and checkout.
 const shoppingCartObject = [
   {
     amount: smartphoneSum,
@@ -79,6 +80,76 @@ function ShopPage() {
     setSumOfItemsInCart(sum);
   }
 
+  function addToCart(e) {
+    console.log(e);
+
+    if (e === "Smartphone") {
+      shoppingCartObject[0].amount = smartphoneSum;
+      shoppingCartObject[0].quantityName = "pc";
+    } else if (e === "Headphones") {
+      shoppingCartObject[1].amount = headphonesSum;
+      shoppingCartObject[1].quantityName = "pc";
+    } else if (e === "Laptop") {
+      shoppingCartObject[2].amount = laptopSum;
+      shoppingCartObject[2].quantityName = "pc";
+    } else if (e === "Keyboard") {
+      shoppingCartObject[3].amount = keyboardSum;
+      shoppingCartObject[3].quantityName = "pc";
+    } else if (e === "Thermal Paste") {
+      shoppingCartObject[5].amount = thermalPasteSum;
+      shoppingCartObject[5].quantityName = "pc";
+    } else if (e === "RAM") {
+      shoppingCartObject[6].amount = ramSum;
+      shoppingCartObject[6].quantityName = "pc";
+    } else if (e === "SSD") {
+      shoppingCartObject[7].amount = ssdSum;
+      shoppingCartObject[7].quantityName = "pc";
+    } else if (e === "Mouse") {
+      shoppingCartObject[4].amount = mouseSum;
+      shoppingCartObject[4].quantityName = "pc";
+    } else if (e === "Monitor") {
+      shoppingCartObject[8].amount = monitorSum;
+      shoppingCartObject[8].quantityName = "pc";
+    }
+
+    countItemsInCart();
+  }
+
+  function deleteFromCart(e) {
+    console.log(e);
+
+    if (e === "Smartphone") {
+      shoppingCartObject[0].amount = 0;
+      shoppingCartObject[0].quantityName = quantityNamePhone;
+    } else if (e === "Headphones") {
+      shoppingCartObject[1].amount = 0;
+      shoppingCartObject[1].quantityName = quantityNameHeadphones;
+    } else if (e === "Laptop") {
+      shoppingCartObject[2].amount = 0;
+      shoppingCartObject[2].quantityName = quantityNameLaptop;
+    } else if (e === "Keyboard") {
+      shoppingCartObject[3].amount = 0;
+      shoppingCartObject[3].quantityName = quantityNameKeyboard;
+    } else if (e === "Thermal Paste") {
+      shoppingCartObject[5].amount = 0;
+      shoppingCartObject[5].quantityName = quantityNamePaste;
+    } else if (e === "RAM") {
+      shoppingCartObject[6].amount = 0;
+      shoppingCartObject[6].quantityName = quantityNameRam;
+    } else if (e === "SSD") {
+      shoppingCartObject[7].amount = 0;
+      shoppingCartObject[7].quantityName = quantityNameSsd;
+    } else if (e === "Mouse") {
+      shoppingCartObject[4].amount = 0;
+      shoppingCartObject[4].quantityName = quantityNameMouse;
+    } else if (e === "Monitor") {
+      shoppingCartObject[8].amount = 0;
+      shoppingCartObject[8].quantityName = quantityNameMonitor;
+    }
+
+    countItemsInCart();
+  }
+
   function changeAmount(e) {
     if (e.name === "Smartphone" && e.operator === "plus") {
       smartphoneSum++;
@@ -89,11 +160,6 @@ function ShopPage() {
       } else {
         quantityNamePhone = "pc";
       }
-
-      shoppingCartObject[0].amount = smartphoneSum;
-      shoppingCartObject[0].quantityName = quantityNamePhone;
-
-      countItemsInCart();
     } else if (e.name === "Smartphone" && e.operator === "minus") {
       smartphoneSum--;
       setPhone(smartphoneSum);
@@ -103,11 +169,6 @@ function ShopPage() {
       } else {
         quantityNamePhone = "pc";
       }
-
-      shoppingCartObject[0].amount = smartphoneSum;
-      shoppingCartObject[0].quantityName = quantityNamePhone;
-
-      countItemsInCart();
     } else if (e.name === "Headphones" && e.operator === "plus") {
       headphonesSum++;
       setHeadphone(headphonesSum);
@@ -117,11 +178,6 @@ function ShopPage() {
       } else {
         quantityNameHeadphones = "pc";
       }
-
-      shoppingCartObject[1].amount = headphonesSum;
-      shoppingCartObject[1].quantityName = quantityNameHeadphones;
-
-      countItemsInCart();
     } else if (e.name === "Headphones" && e.operator === "minus") {
       headphonesSum--;
       setHeadphone(headphonesSum);
@@ -131,11 +187,6 @@ function ShopPage() {
       } else {
         quantityNameHeadphones = "pc";
       }
-
-      shoppingCartObject[1].amount = headphonesSum;
-      shoppingCartObject[1].quantityName = quantityNameHeadphones;
-
-      countItemsInCart();
     } else if (e.name === "Laptop" && e.operator === "plus") {
       laptopSum++;
       setLaptop(laptopSum);
@@ -145,11 +196,6 @@ function ShopPage() {
       } else {
         quantityNameLaptop = "pc";
       }
-
-      shoppingCartObject[2].amount = laptopSum;
-      shoppingCartObject[2].quantityName = quantityNameLaptop;
-
-      countItemsInCart();
     } else if (e.name === "Laptop" && e.operator === "minus") {
       laptopSum--;
       setLaptop(laptopSum);
@@ -159,11 +205,6 @@ function ShopPage() {
       } else {
         quantityNameLaptop = "pc";
       }
-
-      shoppingCartObject[2].amount = laptopSum;
-      shoppingCartObject[2].quantityName = quantityNameLaptop;
-
-      countItemsInCart();
     } else if (e.name === "Keyboard" && e.operator === "plus") {
       keyboardSum++;
       setKeyboard(keyboardSum);
@@ -173,11 +214,6 @@ function ShopPage() {
       } else {
         quantityNameKeyboard = "pc";
       }
-
-      shoppingCartObject[3].amount = keyboardSum;
-      shoppingCartObject[3].quantityName = quantityNameKeyboard;
-
-      countItemsInCart();
     } else if (e.name === "Keyboard" && e.operator === "minus") {
       keyboardSum--;
       setKeyboard(keyboardSum);
@@ -187,11 +223,6 @@ function ShopPage() {
       } else {
         quantityNameKeyboard = "pc";
       }
-
-      shoppingCartObject[3].amount = keyboardSum;
-      shoppingCartObject[3].quantityName = quantityNameKeyboard;
-
-      countItemsInCart();
     } else if (e.name === "Thermal Paste" && e.operator === "plus") {
       thermalPasteSum++;
       setThermalPaste(thermalPasteSum);
@@ -201,11 +232,6 @@ function ShopPage() {
       } else {
         quantityNamePaste = "pc";
       }
-
-      shoppingCartObject[5].amount = thermalPasteSum;
-      shoppingCartObject[5].quantityName = quantityNamePaste;
-
-      countItemsInCart();
     } else if (e.name === "Thermal Paste" && e.operator === "minus") {
       thermalPasteSum--;
       setThermalPaste(thermalPasteSum);
@@ -215,11 +241,6 @@ function ShopPage() {
       } else {
         quantityNamePaste = "pc";
       }
-
-      shoppingCartObject[5].amount = thermalPasteSum;
-      shoppingCartObject[5].quantityName = quantityNamePaste;
-
-      countItemsInCart();
     } else if (e.name === "RAM" && e.operator === "plus") {
       ramSum++;
       setRam(ramSum);
@@ -229,11 +250,6 @@ function ShopPage() {
       } else {
         quantityNameRam = "pc";
       }
-
-      shoppingCartObject[6].amount = ramSum;
-      shoppingCartObject[6].quantityName = quantityNameRam;
-
-      countItemsInCart();
     } else if (e.name === "RAM" && e.operator === "minus") {
       ramSum--;
       setRam(ramSum);
@@ -243,11 +259,6 @@ function ShopPage() {
       } else {
         quantityNameRam = "pc";
       }
-
-      shoppingCartObject[6].amount = ramSum;
-      shoppingCartObject[6].quantityName = quantityNameRam;
-
-      countItemsInCart();
     } else if (e.name === "SSD" && e.operator === "plus") {
       ssdSum++;
       setSsd(ssdSum);
@@ -257,11 +268,6 @@ function ShopPage() {
       } else {
         quantityNameSsd = "pc";
       }
-
-      shoppingCartObject[7].amount = ssdSum;
-      shoppingCartObject[7].quantityName = quantityNameSsd;
-
-      countItemsInCart();
     } else if (e.name === "SSD" && e.operator === "minus") {
       ssdSum--;
       setSsd(ssdSum);
@@ -271,11 +277,6 @@ function ShopPage() {
       } else {
         quantityNameSsd = "pc";
       }
-
-      shoppingCartObject[7].amount = ssdSum;
-      shoppingCartObject[7].quantityName = quantityNameSsd;
-
-      countItemsInCart();
     } else if (e.name === "Mouse" && e.operator === "plus") {
       mouseSum++;
       setMouse(mouseSum);
@@ -285,11 +286,6 @@ function ShopPage() {
       } else {
         quantityNameMouse = "pc";
       }
-
-      shoppingCartObject[4].amount = mouseSum;
-      shoppingCartObject[4].quantityName = quantityNameMouse;
-
-      countItemsInCart();
     } else if (e.name === "Mouse" && e.operator === "minus") {
       mouseSum--;
       setMouse(mouseSum);
@@ -299,11 +295,6 @@ function ShopPage() {
       } else {
         quantityNameMouse = "pc";
       }
-
-      shoppingCartObject[4].amount = mouseSum;
-      shoppingCartObject[4].quantityName = quantityNameMouse;
-
-      countItemsInCart();
     } else if (e.name === "Monitor" && e.operator === "plus") {
       monitorSum++;
       setMonitor(monitorSum);
@@ -313,11 +304,6 @@ function ShopPage() {
       } else {
         quantityNameMonitor = "pc";
       }
-
-      shoppingCartObject[8].amount = monitorSum;
-      shoppingCartObject[8].quantityName = quantityNameMonitor;
-
-      countItemsInCart();
     } else if (e.name === "Monitor" && e.operator === "minus") {
       monitorSum--;
       setMonitor(monitorSum);
@@ -327,20 +313,16 @@ function ShopPage() {
       } else {
         quantityNameMonitor = "pc";
       }
-
-      shoppingCartObject[8].amount = monitorSum;
-      shoppingCartObject[8].quantityName = quantityNameMonitor;
-
-      countItemsInCart();
     }
   }
 
   return (
     <>
-      <Header shoppingCart={shoppingCart} sum={sumOfItemsInCart} />
+      <Header shoppingCart={shoppingCart} sum={sumOfItemsInCart} deleteFromCart={deleteFromCart} />
       <div id="item-cards-div">
         <ShopItem
           changeAmount={changeAmount}
+          addToCart={addToCart}
           amount={phone}
           quantityName={quantityNamePhone}
           name="Smartphone"
@@ -348,6 +330,7 @@ function ShopPage() {
         />
         <ShopItem
           changeAmount={changeAmount}
+          addToCart={addToCart}
           amount={headphone}
           quantityName={quantityNameHeadphones}
           name="Headphones"
@@ -355,6 +338,7 @@ function ShopPage() {
         />
         <ShopItem
           changeAmount={changeAmount}
+          addToCart={addToCart}
           amount={laptop}
           quantityName={quantityNameLaptop}
           name="Laptop"
@@ -362,6 +346,7 @@ function ShopPage() {
         />
         <ShopItem
           changeAmount={changeAmount}
+          addToCart={addToCart}
           amount={keyboard}
           quantityName={quantityNameKeyboard}
           name="Keyboard"
@@ -369,6 +354,7 @@ function ShopPage() {
         />
         <ShopItem
           changeAmount={changeAmount}
+          addToCart={addToCart}
           amount={mouse}
           quantityName={quantityNameMouse}
           name="Mouse"
@@ -376,6 +362,7 @@ function ShopPage() {
         />
         <ShopItem
           changeAmount={changeAmount}
+          addToCart={addToCart}
           amount={thermalPaste}
           quantityName={quantityNamePaste}
           name="Thermal Paste"
@@ -383,6 +370,7 @@ function ShopPage() {
         />
         <ShopItem
           changeAmount={changeAmount}
+          addToCart={addToCart}
           amount={ram}
           quantityName={quantityNameRam}
           name="RAM"
@@ -390,6 +378,7 @@ function ShopPage() {
         />
         <ShopItem
           changeAmount={changeAmount}
+          addToCart={addToCart}
           amount={ssd}
           quantityName={quantityNameSsd}
           name="SSD"
@@ -397,6 +386,7 @@ function ShopPage() {
         />
         <ShopItem
           changeAmount={changeAmount}
+          addToCart={addToCart}
           amount={monitor}
           quantityName={quantityNameMonitor}
           name="Monitor"
