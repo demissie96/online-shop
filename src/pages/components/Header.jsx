@@ -12,9 +12,7 @@ function Header(props) {
         aria-label="Dark offcanvas navbar"
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            Online Shop
-          </a>
+          <span className="navbar-brand">Online Shop</span>
           <div>
             <i id="items-in-cart">{props.sum}</i>
             <span id="cart-text">Shopping Cart</span>
@@ -95,9 +93,7 @@ function Header(props) {
                 {props.sum > 0 ? (
                   <button
                     className="btn btn-outline-success"
-                    onClick={() =>
-                      navigate("/checkout")
-                    }
+                    onClick={() => navigate("/checkout")}
                   >
                     Checkout
                   </button>

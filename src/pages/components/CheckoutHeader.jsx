@@ -12,13 +12,13 @@ function CheckoutHeader(props) {
         aria-label="Dark offcanvas navbar"
       >
         <div className="container-fluid">
-          <p className="navbar-brand">Online Shop</p>
+          <span className="navbar-brand">Online Shop</span>
           <div>
             <button
-              className="btn btn-outline-warning"
+              className="btn btn-sm btn-outline-warning"
               onClick={() => navigate("/")}
             >
-              Go Back
+              Continue Shopping
             </button>
           </div>
         </div>
