@@ -16,7 +16,7 @@ function CheckoutHeader(props) {
           <div>
             <button
               className="btn btn-sm btn-outline-warning"
-              onClick={() => navigate("/")}
+              onClick={() => navigate(-1)}
             >
               Continue Shopping
             </button>
