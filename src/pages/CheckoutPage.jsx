@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import CheckoutHeader from "./components/CheckoutHeader";
 
 function CheckoutPage() {
   useEffect(() => {
@@ -9,6 +10,7 @@ function CheckoutPage() {
 
   return (
     <>
+      <CheckoutHeader />
       <h1>Create a Checkout Header component!</h1>
     </>
   );
