@@ -97,8 +97,6 @@ function ShopPage() {
   }
 
   function addToCart(e) {
-    console.log(e);
-
     if (e === "Smartphone") {
       shoppingCartObject[0].amount = smartphoneSum;
       shoppingCartObject[0].quantityName = quantityNamePhone;
@@ -132,8 +130,6 @@ function ShopPage() {
   }
 
   function deleteFromCart(e) {
-    console.log(e);
-
     if (e === "Smartphone") {
       shoppingCartObject[0].amount = 0;
       shoppingCartObject[0].quantityName = "pc";

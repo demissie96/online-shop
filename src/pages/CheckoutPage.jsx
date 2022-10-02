@@ -5,14 +5,48 @@ import "./CheckoutPage.css";
 let sum = 0;
 let objectResult;
 
+function sendEmail(e) {
+  e.preventDefault();
+
+  let firstName = e.target.firstName.value;
+  let lastName = e.target.lastName.value;
+  let email = e.target.email.value;
+  let orderList = [];
+  let emailMessage = `Dear ${firstName} ${lastName},
+  
+Thank you for checking my portfolio project. 
+
+Your sham purchase list: 
+    
+    `;
+
+  objectResult.forEach((element) => {
+    if (element.amount !== 0) {
+      orderList.push(element);
+      emailMessage =
+        emailMessage +
+        `- ${element.name} (${element.amount}${element.quantityName})
+    `;
+    }
+  });
+  emailMessage =
+    emailMessage +
+    `
+Total: ${sum}${sum > 1 ? "pcs" : "pc"}
+    `;
+
+  console.log(emailMessage);
+}
+
 function CheckoutPage() {
   const [cartSum, setCartSum] = useState(sum);
   const [cartList, setCartList] = useState([]);
 
+  const [validated, setValidated] = useState("");
+
   useEffect(() => {
     const result = localStorage.getItem("cart");
     objectResult = JSON.parse(result);
-    console.log(objectResult);
     setCartList(objectResult);
 
     sum = 0;
@@ -20,6 +54,12 @@ function CheckoutPage() {
       sum += element.amount;
     });
     setCartSum(sum);
+
+    if (sum < 1) {
+      document.getElementById("send-email-btn").disabled = true;
+    } else {
+      document.getElementById("send-email-btn").disabled = false;
+    }
   }, []);
 
   return (
@@ -80,7 +120,12 @@ function CheckoutPage() {
                 </div>
                 <div className="col-md-7 col-lg-8">
                   <h4 className="mb-3">Billing address</h4>
-                  <form className="needs-validation" noValidate>
+                  <form
+                    className={validated}
+                    onSubmit={(e) => {
+                      sendEmail(e);
+                    }}
+                  >
                     <div className="row g-3">
                       <div className="col-sm-6">
                         <label htmlFor="firstName" className="form-label">
@@ -90,8 +135,9 @@ function CheckoutPage() {
                           type="text"
                           className="form-control"
                           id="firstName"
+                          name="firstName"
                           placeholder=""
-                          required=""
+                          required
                         />
                         <div className="invalid-feedback">
                           Valid first name is required.
@@ -106,8 +152,9 @@ function CheckoutPage() {
                           type="text"
                           className="form-control"
                           id="lastName"
+                          name="lastName"
                           placeholder=""
-                          required=""
+                          required
                         />
                         <div className="invalid-feedback">
                           Valid last name is required.
@@ -122,20 +169,34 @@ function CheckoutPage() {
                           type="email"
                           className="form-control"
                           id="email"
+                          name="email"
                           placeholder="example@email.com"
+                          required
                         />
                         <div className="invalid-feedback">
-                          Please enter a valid email address for shipping
-                          updates.
+                          Please enter a valid email address.
                         </div>
                       </div>
                     </div>
 
                     <hr className="my-4" />
-
+                    {sum < 1 ? (
+                      <p
+                        style={{
+                          color: "red",
+                          margin: "-12px 0 12px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Your cart is empty...
+                      </p>
+                    ) : null}
                     <button
+                      id="send-email-btn"
                       className="w-100 btn btn-primary btn-lg"
                       type="submit"
+                      disabled
+                      onClick={() => setValidated("was-validated")}
                     >
                       Checkout
                     </button>
