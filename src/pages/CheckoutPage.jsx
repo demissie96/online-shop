@@ -3,6 +3,7 @@ import CheckoutHeader from "./components/CheckoutHeader";
 import "./CheckoutPage.css";
 import axios from "axios";
 import ConfirmCheckout from "./components/ConfirmCheckout";
+import Loading from "./components/Loading";
 
 let sum = 0;
 let objectResult;
@@ -13,6 +14,8 @@ function CheckoutPage() {
   const [cartList, setCartList] = useState([]);
   const [validated, setValidated] = useState("");
   const [isCheckedOut, setIsCheckedOut] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [checkoutVisible, setCheckoutVisible] = useState(true);
 
   useEffect(() => {
     const result = localStorage.getItem("cart");
@@ -34,6 +37,9 @@ function CheckoutPage() {
 
   function sendEmail(e) {
     e.preventDefault();
+
+    setCheckoutVisible(false);
+    setIsLoading(true);
 
     let firstName = e.target.firstName.value;
     let lastName = e.target.lastName.value;
@@ -80,11 +86,12 @@ Total: ${sum}${sum > 1 ? "pcs" : "pc"}
         if (response.data.result === "Success") {
           console.log(response.data);
           success = true;
+          setIsLoading(false);
           setIsCheckedOut(true);
-
         } else {
           console.log(response.data);
           success = false;
+          setIsLoading(false);
           setIsCheckedOut(true);
         }
       });
@@ -95,7 +102,8 @@ Total: ${sum}${sum > 1 ? "pcs" : "pc"}
       <CheckoutHeader />
       <div id="checkout-body">
         {isCheckedOut && <ConfirmCheckout success={success} />}
-        {isCheckedOut === false && (
+        {isLoading && <Loading />}
+        {checkoutVisible && (
           <div
             className="bg-light"
             data-new-gr-c-s-check-loaded="14.1080.0"
