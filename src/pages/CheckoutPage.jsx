@@ -88,6 +88,7 @@ Total: ${sum}${sum > 1 ? "pcs" : "pc"}
           success = true;
           setIsLoading(false);
           setIsCheckedOut(true);
+          localStorage.clear();
         } else {
           console.log(response.data);
           success = false;

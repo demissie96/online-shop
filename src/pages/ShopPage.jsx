@@ -73,15 +73,25 @@ function ShopPage() {
   const [sumOfItemsInCart, setSumOfItemsInCart] = useState(0);
 
   useEffect(() => {
-    const result = localStorage.getItem("cart");
-    const objectResult = JSON.parse(result);
+    try {
+      const result = localStorage.getItem("cart");
+      const objectResult = JSON.parse(result);
 
-    for (let index = 0; index < shoppingCartObject.length; index++) {
-      shoppingCartObject[index].amount = objectResult[index].amount;
-      shoppingCartObject[index].quantityName = objectResult[index].quantityName;
+      for (let index = 0; index < shoppingCartObject.length; index++) {
+        shoppingCartObject[index].amount = objectResult[index].amount;
+        shoppingCartObject[index].quantityName =
+          objectResult[index].quantityName;
+      }
+
+      countItemsInCart();
+    } catch (error) {
+      for (let index = 0; index < shoppingCartObject.length; index++) {
+        shoppingCartObject[index].amount = 0;
+        shoppingCartObject[index].quantityName = "pc";
+      }
+      countItemsInCart();
+      window.location.reload();
     }
-
-    countItemsInCart();
   }, []);
 
   function countItemsInCart() {
