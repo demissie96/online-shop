@@ -14,7 +14,7 @@ function ConfirmCheckout(props) {
           </p>
           <div id="button-continue">
             <button
-              className="btn btn-outline-warning"
+              className="btn btn-primary"
               onClick={() => navigate(-1)}
             >
               Continue Shopping
@@ -29,7 +29,7 @@ function ConfirmCheckout(props) {
           <div>
             <button
               id="button-continue"
-              className="btn btn-sm btn-outline-warning"
+              className="btn btn-primary"
               onClick={() => navigate(-1)}
             >
               Continue Shopping

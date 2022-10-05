@@ -68,7 +68,7 @@ function Header(props) {
                               {element.quantityName}
                             </i>
                             <button
-                              className="btn btn-outline-danger"
+                              className="btn btn-danger"
                               onClick={() => {
                                 props.deleteFromCart(element.name);
                               }}
@@ -92,13 +92,13 @@ function Header(props) {
               <div>
                 {props.sum > 0 ? (
                   <button
-                    className="btn btn-outline-success"
+                    className="btn btn-success"
                     onClick={() => navigate("/checkout")}
                   >
                     Checkout
                   </button>
                 ) : (
-                  <button disabled className="btn btn-outline-danger">
+                  <button disabled className="btn btn-danger">
                     Checkout
                   </button>
                 )}
