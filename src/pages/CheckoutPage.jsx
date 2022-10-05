@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CheckoutHeader from "./components/CheckoutHeader";
 import "./CheckoutPage.css";
+import axios from "axios";
 
 let sum = 0;
 let objectResult;
@@ -35,7 +36,26 @@ Your sham purchase list:
 Total: ${sum}${sum > 1 ? "pcs" : "pc"}
     `;
 
-  console.log(emailMessage);
+  emailMessage = encodeURIComponent(emailMessage);
+
+  axios
+    .post(
+      process.env.REACT_APP_API_URL,
+      {},
+      {
+        headers: {
+          email: email,
+          text: emailMessage,
+        },
+      }
+    )
+    .then(function (response) {
+      if (response.data.result === "Success") {
+        console.log(response.data);
+      } else {
+        console.log(response.data);
+      }
+    });
 }
 
 function CheckoutPage() {
