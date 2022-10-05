@@ -35,35 +35,34 @@ function CheckoutPage() {
   function sendEmail(e) {
     e.preventDefault();
 
-   
-
     let firstName = e.target.firstName.value;
     let lastName = e.target.lastName.value;
     let email = e.target.email.value;
     let orderList = [];
-    let emailMessage = `Dear ${firstName} ${lastName},
-    
-  Thank you for checking my portfolio project. 
-  
-  Your fake purchase list: 
+    let emailMessage = `Dear ${firstName} ${lastName}, 
+
+Thank you for checking my portfolio project. 
+
+Your fake purchase list: 
       
-      `;
+`;
 
     objectResult.forEach((element) => {
       if (element.amount !== 0) {
         orderList.push(element);
         emailMessage =
           emailMessage +
-          `- ${element.name} (${element.amount}${element.quantityName})
-      `;
+          `  - ${element.name} (${element.amount}${element.quantityName})
+`;
       }
     });
     emailMessage =
       emailMessage +
       `
-  Total: ${sum}${sum > 1 ? "pcs" : "pc"}
+Total: ${sum}${sum > 1 ? "pcs" : "pc"}
       `;
 
+    console.log(emailMessage);
     emailMessage = encodeURIComponent(emailMessage);
 
     axios
@@ -95,7 +94,7 @@ function CheckoutPage() {
     <>
       <CheckoutHeader />
       <div id="checkout-body">
-        {isCheckedOut && <ConfirmCheckout success={success}/>}
+        {isCheckedOut && <ConfirmCheckout success={success} />}
         {isCheckedOut === false && (
           <div
             className="bg-light"
