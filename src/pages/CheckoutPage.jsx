@@ -100,7 +100,7 @@ Total: ${sum}${sum > 1 ? "pcs" : "pc"}
 
   return (
     <>
-      <CheckoutHeader />
+      <CheckoutHeader buttonVisible={checkoutVisible}/>
       <div id="checkout-body">
         {isCheckedOut && <ConfirmCheckout success={success} />}
         {isLoading && <Loading />}

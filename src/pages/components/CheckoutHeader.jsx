@@ -14,12 +14,14 @@ function CheckoutHeader(props) {
         <div className="container-fluid">
           <span className="navbar-brand">Online Shop</span>
           <div>
-            <button
-              className="btn btn-sm btn-outline-warning"
-              onClick={() => navigate(-1)}
-            >
-              Continue Shopping
-            </button>
+            {props.buttonVisible && (
+              <button
+                className="btn btn-sm btn-outline-warning"
+                onClick={() => navigate(-1)}
+              >
+                Continue Shopping
+              </button>
+            )}
           </div>
         </div>
       </nav>
