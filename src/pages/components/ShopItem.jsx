@@ -28,7 +28,7 @@ function ShopItem(props) {
         <div className="card-body">
           <h4>{props.name}</h4>
           <p className="card-text">
-            You won't purchase anything. It's only for demonstration purpose. 
+            You won't purchase anything. It's only for demonstration purpose.
           </p>
           <div className="d-flex justify-content-between align-items-center">
             <div id="btn-group-div" className="btn-group">
@@ -38,7 +38,7 @@ function ShopItem(props) {
                 className="btn btn-sm btn-outline-secondary"
                 onClick={() => changeAmount("plus")}
               >
-                <i  class="fa-solid fa-plus"></i>
+                <i className="fa-solid fa-plus"></i>
               </button>
               <button
                 id="button-minus"
@@ -46,7 +46,7 @@ function ShopItem(props) {
                 className="btn btn-sm btn-outline-secondary"
                 onClick={() => changeAmount("minus")}
               >
-                <i  class="fa-solid fa-minus"></i>
+                <i className="fa-solid fa-minus"></i>
               </button>
               <p id="item-number" className="text-muted">
                 {props.amount} {props.quantityName}
